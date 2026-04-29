@@ -82,7 +82,7 @@ function Navbar() {
     <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? 'bg-white shadow-md py-3' : 'bg-transparent py-5'}`}>
       <div className="container mx-auto px-4 md:px-6 flex items-center justify-between">
         <a href="#" className="flex items-center gap-2 z-50">
-          <img src="/images/cmm-facebook-1.jpg" alt="CMM English School logo" className="w-10 h-10 rounded-full object-cover bg-white shadow-md border border-white/70" />
+          <img src="images/cmm-facebook-1.jpg" alt="CMM English School logo" className="w-10 h-10 rounded-full object-cover bg-white shadow-md border border-white/70" />
           <div>
             <div className={`font-serif font-bold text-xl leading-none ${isScrolled ? 'text-secondary' : 'text-white'}`}>CMM English</div>
             <div className={`text-[10px] tracking-widest uppercase font-semibold ${isScrolled ? 'text-primary' : 'text-blue-200'}`}>School</div>
@@ -135,7 +135,7 @@ function Hero() {
     <section className="relative min-h-[100dvh] flex items-center justify-center overflow-hidden">
       <div className="absolute inset-0 bg-secondary">
         <img 
-          src="/images/hero.jpg" 
+          src="images/hero.jpg" 
           alt="CMM English School Campus" 
           className="w-full h-full object-cover opacity-40 mix-blend-overlay"
         />
@@ -193,12 +193,12 @@ function Section({ id, title, subtitle, children, className = "" }: { id: string
 function Gallery() {
   const [selectedImage, setSelectedImage] = useState<{ src: string; title: string } | null>(null);
   const images = [
-    { src: "/images/gallery1.jpg", title: "Sports Day" },
-    { src: "/images/gallery2.jpg", title: "Art Exhibition" },
-    { src: "/images/gallery3.jpg", title: "Music Class" },
-    { src: "/images/about.png", title: "Classroom Learning" },
-    { src: "/images/lab.png", title: "Science Lab" },
-    { src: "/images/sports.png", title: "Playground" },
+    { src: "images/gallery1.jpg", title: "Sports Day" },
+    { src: "images/gallery2.jpg", title: "Art Exhibition" },
+    { src: "images/gallery3.jpg", title: "Music Class" },
+    { src: "images/about.png", title: "Classroom Learning" },
+    { src: "images/lab.png", title: "Science Lab" },
+    { src: "images/sports.png", title: "Playground" },
   ];
 
   return (
@@ -367,7 +367,7 @@ export default function App() {
             <div className="order-1 md:order-2 flex justify-center">
                <div className="relative w-64 h-64 md:w-80 md:h-80">
                   <div className="absolute inset-0 bg-accent rounded-full -translate-x-4 translate-y-4 opacity-50"></div>
-                  <img src="/images/director.jpg" alt="Director Portrait" className="relative z-10 w-full h-full object-cover rounded-full shadow-xl border-4 border-white" />
+                  <img src="images/director.jpg" alt="Director Portrait" className="relative z-10 w-full h-full object-cover rounded-full shadow-xl border-4 border-white" />
                </div>
             </div>
           </div>
@@ -378,7 +378,7 @@ export default function App() {
         <div className="grid md:grid-cols-2 gap-12 items-center">
           <div className="relative">
             <div className="absolute -inset-4 bg-muted rounded-[2rem] transform -rotate-3 z-0"></div>
-            <img src="/images/about.png" alt="Students in classroom" className="relative z-10 rounded-2xl shadow-xl w-full object-cover aspect-[4/3]" />
+            <img src="images/about.png" alt="Students in classroom" className="relative z-10 rounded-2xl shadow-xl w-full object-cover aspect-[4/3]" />
             <div className="absolute -bottom-6 -right-6 bg-accent text-secondary p-6 rounded-2xl shadow-lg z-20 max-w-[200px] border-2 border-white">
               <div className="font-serif font-bold text-3xl mb-1">A+</div>
               <div className="text-sm font-medium leading-tight">Rated for Academic Excellence</div>
@@ -524,10 +524,10 @@ export default function App() {
             ))}
           </div>
           <div className="grid grid-cols-2 gap-4 h-full">
-            <img src="/images/library.png" alt="Library" className="rounded-2xl object-cover w-full h-64 md:h-full shadow-lg" />
+            <img src="images/library.png" alt="Library" className="rounded-2xl object-cover w-full h-64 md:h-full shadow-lg" />
             <div className="grid grid-rows-2 gap-4 h-full">
-              <img src="/images/lab.png" alt="Science Lab" className="rounded-2xl object-cover w-full h-full shadow-lg" />
-              <img src="/images/sports.png" alt="Playground" className="rounded-2xl object-cover w-full h-full shadow-lg" />
+              <img src="images/lab.png" alt="Science Lab" className="rounded-2xl object-cover w-full h-full shadow-lg" />
+              <img src="images/sports.png" alt="Playground" className="rounded-2xl object-cover w-full h-full shadow-lg" />
             </div>
           </div>
         </div>
@@ -740,7 +740,7 @@ export default function App() {
           <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-12 mb-16">
             <div className="lg:col-span-2">
               <div className="flex items-center gap-3 mb-6">
-                <img src="/images/cmm-facebook-1.jpg" alt="CMM English School logo" className="w-12 h-12 rounded-full object-cover bg-white shadow-md" />
+                <img src="images/cmm-facebook-1.jpg" alt="CMM English School logo" className="w-12 h-12 rounded-full object-cover bg-white shadow-md" />
                 <div>
                   <div className="font-serif font-bold text-2xl leading-none">CMM English</div>
                   <div className="text-[11px] tracking-[0.2em] uppercase font-bold text-accent">School</div>

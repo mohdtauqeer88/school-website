@@ -1,5 +1,5 @@
-import React from "react";
-import { MapPin, Phone, Mail } from "lucide-react";
+import React, { useState } from "react";
+import { MapPin, Phone, Mail, CheckCircle2, AlertCircle } from "lucide-react";
 import { Button } from "./ui/button";
 import { Card, CardContent } from "./ui/card";
 import { Input } from "./ui/input";
@@ -7,7 +7,32 @@ import { Textarea } from "./ui/textarea";
 import { Section } from "./Section";
 import { SITE } from "../config";
 
+type Status = "idle" | "submitting" | "success" | "error";
+
 export function Contact() {
+  const [status, setStatus] = useState<Status>("idle");
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setStatus("submitting");
+    try {
+      const res = await fetch(SITE.formspree, {
+        method: "POST",
+        body: new FormData(e.currentTarget),
+        headers: { Accept: "application/json" },
+      });
+      const data = await res.json();
+      if (data.success) {
+        setStatus("success");
+        (e.target as HTMLFormElement).reset();
+      } else {
+        setStatus("error");
+      }
+    } catch {
+      setStatus("error");
+    }
+  };
+
   return (
     <Section
       id="contact"
@@ -94,11 +119,8 @@ export function Contact() {
             <h3 className="text-2xl font-serif font-bold text-secondary mb-6">
               Admission Enquiry Form
             </h3>
-            <form
-              className="space-y-5"
-              action={SITE.formspree}
-              method="POST"
-            >
+            <form className="space-y-5" onSubmit={handleSubmit}>
+              <input type="hidden" name="access_key" value="bbc65274-00c2-420d-b4f5-ebc550db2dbc"></input>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                 <div className="space-y-2">
                   <label className="text-sm font-medium text-secondary">
@@ -180,13 +202,40 @@ export function Contact() {
               </div>
               <Button
                 type="submit"
-                className="w-full bg-secondary hover:bg-secondary/90 text-white h-14 text-lg rounded-xl shadow-md transition-transform hover:-translate-y-1"
+                disabled={status === "submitting"}
+                className="w-full bg-secondary hover:bg-secondary/90 text-white h-14 text-lg rounded-xl shadow-md transition-transform hover:-translate-y-1 disabled:opacity-70 disabled:cursor-not-allowed"
               >
-                Submit Enquiry
+                {status === "submitting" ? "Sending…" : "Submit Enquiry"}
               </Button>
-              <p className="text-xs text-center text-muted-foreground">
-                Our admissions team will contact you within 24 hours.
-              </p>
+
+              {status === "success" && (
+                <div className="flex items-start gap-3 bg-green-50 border border-green-200 text-green-800 rounded-xl px-4 py-3 text-sm">
+                  <CheckCircle2 className="w-5 h-5 flex-shrink-0 mt-0.5 text-green-600" />
+                  <p>
+                    <span className="font-semibold">Enquiry sent!</span> Our
+                    admissions team will contact you within 24 hours.
+                  </p>
+                </div>
+              )}
+
+              {status === "error" && (
+                <div className="flex items-start gap-3 bg-red-50 border border-red-200 text-red-800 rounded-xl px-4 py-3 text-sm">
+                  <AlertCircle className="w-5 h-5 flex-shrink-0 mt-0.5 text-red-600" />
+                  <p>
+                    Something went wrong. Please try again or call us at{" "}
+                    <a href={`tel:${SITE.phone.replace(/\s/g, "")}`} className="font-semibold underline">
+                      {SITE.phone}
+                    </a>
+                    .
+                  </p>
+                </div>
+              )}
+
+              {status === "idle" && (
+                <p className="text-xs text-center text-muted-foreground">
+                  Our admissions team will contact you within 24 hours.
+                </p>
+              )}
             </form>
           </CardContent>
         </Card>

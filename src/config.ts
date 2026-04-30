@@ -23,10 +23,11 @@ export const SITE = {
   social: {
     facebook: "https://www.facebook.com/cmmenglishschool",
     instagram: "https://www.instagram.com/cmmenglishschool",
-    youtube: "https://www.youtube.com/@cmmenglishschool",
+    youtube: "https://www.youtube.com/@cmmenglishschool8417",
   },
   // Replace with the real Formspree form ID from https://formspree.io
-  formspree: "https://formspree.io/f/YOUR_FORM_ID",
+ // formspree: "https://formspree.io/f/YOUR_FORM_ID",
+    formspree: "https://api.web3forms.com/submit",
 };
 
 export const STATS = [
